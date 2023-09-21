@@ -1,11 +1,14 @@
 // get the client
-const mysql = require('mysql2');
+import mysql from 'mysql2';
 
 // create the connection to database
-const connection = mysql.createConnection({
+export const connection = mysql.createConnection({
   host: 'localhost',
+  port: 3306,
   user: 'root',
-  database: 'MusicBase'
+  database: 'MusicBase',
+  password: 'Dadihjem12321!',
+  multipleStatements: true
 });
 
 // simple query
