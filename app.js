@@ -1,6 +1,7 @@
 import express from "express";
 import fs from "fs/promises";
 import cors from "cors";
+//this is DB
 
 const app = express();
 const port = process.env.PORT || 3333;
