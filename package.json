@@ -2,12 +2,12 @@
     "name": "express-rest-users",
     "version": "1.0.0",
     "description": "Users REST API",
-    "main": "app.js",
+    "main": "appDB.js",
     "type": "module",
     "scripts": {
-        "start": "node --watch app.js"
+        "start": "node --watch appDB.js"
     },
-    "author": "Rasmus Cederdorff",
+    "author": "Nicki Duris Rasmussen",
     "license": "ISC",
     "dependencies": {
         "cors": "^2.8.5",
