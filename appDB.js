@@ -30,14 +30,16 @@ app.get("/search", (request, response) => {
             JOIN artists a ON albums.artist_id = a.artist_id
             WHERE album_name LIKE '%${searchTerm}%' OR release_year LIKE '%${searchTerm}%' OR a.name Like '%${searchTerm}%'`;
         } else if (searchType === "track") {
-        sqlQuery = `
-            SELECT track_name, a.name, al.album_name, a.artist_id, al.album_id 
-            FROM tracks 
-                JOIN artists a ON tracks.artist_id = a.artist_id 
-                JOIN albums al ON tracks.album_id = al.album_id 
-            WHERE track_name LIKE '%${searchTerm}%' 
-                OR  al.album_name LIKE '%${searchTerm}%' 
-                OR  a.name LIKE '%${searchTerm}%'`;
+            sqlQuery = `
+            SELECT T.track_name, A.name, AL.album_name, A.artist_id, AL.album_id
+            FROM Tracks T
+            LEFT JOIN Track_Artist TA ON T.track_id = TA.track_id
+            LEFT JOIN Artists A ON TA.artist_id = A.artist_id
+            LEFT JOIN Albums AL ON T.album_id = AL.album_id
+            WHERE T.track_name LIKE '%${searchTerm}%'
+            OR AL.album_name LIKE '%${searchTerm}%'
+            OR A.name LIKE '%${searchTerm}%'
+          `;
         }
 
     // Execute the SQL query with the search term
